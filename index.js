@@ -1,10 +1,10 @@
 var xel = require('xlsx');
 var fs = require('graceful-fs');
 
-exports.countExcel = function (output, tail) {
+exports.countExcel = function (output, name) {
 
 var moduleNames = [];
-for (var x = 0; x < output.length - 2; x++) {
+for (var x = 0; x < output.length - 1; x++) {
 	moduleNames[x] = [];
 	if (x === 0) {
 		moduleNames[x][0] = "Module Name";
@@ -47,6 +47,6 @@ ws['!cols'] = wsCols;
 ws['!ref'] = xel.utils.encode_range(range);
 wb.SheetNames.push(wsName);
 wb.Sheets[wsName] = ws;
-xel.writeFile(wb, 'output/output' + tail + '.xlsx');
+xel.writeFile(wb, name + '.xlsx');
 
 }
